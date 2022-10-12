@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 import json
 
-
 class InterfaceAPI(Flask):
     def __init__(self, import_name):
         super(InterfaceAPI, self).__init__(import_name)
