@@ -1,7 +1,6 @@
 #Interface Api
 
-create virtual environment
+create virtual environment and activate
 ```
-
-
+pip intall -r requirements.txt
 ```
