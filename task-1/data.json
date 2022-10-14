@@ -1,0 +1,232 @@
+{
+    "ietf-interfaces:interfaces": {
+        "interface": [
+            {
+                "name": "FastEthernet0/0/0",
+                "description": "FE000",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": false,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {},
+                "ietf-ip:ipv6": {
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "FastEthernet0/0/1",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": true,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {},
+                "ietf-ip:ipv6": {
+                    "address": [
+                        {
+                            "ip": "2000:500:5::1",
+                            "prefix-length": 48
+                        }
+                    ],
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "FastEthernet0/0/2",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": false,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {},
+                "ietf-ip:ipv6": {
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "FastEthernet0/0/3",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": false,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {
+                    "address": [
+                        {
+                            "ip": "3.4.5.6",
+                            "netmask": "255.255.255.0"
+                        }
+                    ]
+                },
+                "ietf-ip:ipv6": {
+                    "address": [
+                        {
+                            "ip": "2003:500:5::1",
+                            "prefix-length": 48
+                        }
+                    ],
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "FastEthernet0/0/3.9",
+                "description": "FEther3.9b",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": true,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {},
+                "ietf-ip:ipv6": {
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "FastEthernet0/0/4",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": false,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {},
+                "ietf-ip:ipv6": {
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "FastEthernet0/0/5",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": false,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {},
+                "ietf-ip:ipv6": {
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "FastEthernet0/0/6",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": false,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {},
+                "ietf-ip:ipv6": {
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "FastEthernet0/0/7",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": false,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {},
+                "ietf-ip:ipv6": {
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "GigabitEthernet0",
+                "description": "GE0",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": true,
+                "link-up-down-trap-enable": "disabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {
+                    "address": [
+                        {
+                            "ip": "10.22.52.245",
+                            "netmask": "255.255.255.192"
+                        }
+                    ]
+                },
+                "ietf-ip:ipv6": {
+                    "address": [
+                        {
+                            "ip": "2000:500:5::2",
+                            "prefix-length": 48
+                        }
+                    ],
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "GigabitEthernet0.3",
+                "description": "Gig0.3",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": true,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {},
+                "ietf-ip:ipv6": {
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "GigabitEthernet0.4",
+                "type": "ianaift:ethernetCsmacd",
+                "enabled": true,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {},
+                "ietf-ip:ipv6": {
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            },
+            {
+                "name": "Loopback0",
+                "type": "ianaift:softwareLoopback",
+                "enabled": true,
+                "link-up-down-trap-enable": "enabled",
+                "cisco-ethernet:ethernet": {},
+                "cisco-pw:pw-neighbor": {
+                    "load-balance": {}
+                },
+                "ietf-ip:ipv4": {
+                    "address": [
+                        {
+                            "ip": "2.2.2.2",
+                            "netmask": "255.255.255.255"
+                        }
+                    ]
+                },
+                "ietf-ip:ipv6": {
+                    "ietf-ipv6-unicast-routing:ipv6-router-advertisements": {}
+                }
+            }
+        ]
+    }
+    
+}
