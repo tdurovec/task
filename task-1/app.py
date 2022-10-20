@@ -3,8 +3,7 @@ import json
 import http
 
 class InterfaceAPI(Flask):
-
-    FILE_NAME = "data.json"
+    FILE_NAME = "../data.json"
     FILTERED_OPTIONS = ["name", "type", "enabled"]
 
     def __init__(self, import_name):

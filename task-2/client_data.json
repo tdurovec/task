@@ -1,0 +1,118 @@
+[
+  {
+    "name": "FastEthernet0/0/0",
+    "description": "FE000",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": false,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {}
+  },
+  {
+    "name": "FastEthernet0/0/1",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": true,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {}
+  },
+  {
+    "name": "FastEthernet0/0/2",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": false,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {}
+  },
+  {
+    "name": "FastEthernet0/0/3",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": false,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {
+      "address": [
+        {
+          "ip": "3.4.5.6",
+          "netmask": "255.255.255.0"
+        }
+      ]
+    }
+  },
+  {
+    "name": "FastEthernet0/0/3.9",
+    "description": "FEther3.9b",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": true,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {}
+  },
+  {
+    "name": "FastEthernet0/0/4",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": false,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {}
+  },
+  {
+    "name": "FastEthernet0/0/5",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": false,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {}
+  },
+  {
+    "name": "FastEthernet0/0/6",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": false,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {}
+  },
+  {
+    "name": "FastEthernet0/0/7",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": false,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {}
+  },
+  {
+    "name": "GigabitEthernet0",
+    "description": "GE0",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": true,
+    "link_up_down_trap_enable": "disabled",
+    "ietf_ip_ipv4": {
+      "address": [
+        {
+          "ip": "10.22.52.245",
+          "netmask": "255.255.255.192"
+        }
+      ]
+    }
+  },
+  {
+    "name": "GigabitEthernet0.3",
+    "description": "Gig0.3",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": true,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {}
+  },
+  {
+    "name": "GigabitEthernet0.4",
+    "type": "ianaift:ethernetCsmacd",
+    "enabled": true,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {}
+  },
+  {
+    "name": "Loopback0",
+    "type": "ianaift:softwareLoopback",
+    "enabled": true,
+    "link_up_down_trap_enable": "enabled",
+    "ietf_ip_ipv4": {
+      "address": [
+        {
+          "ip": "2.2.2.2",
+          "netmask": "255.255.255.255"
+        }
+      ]
+    }
+  }
+]
