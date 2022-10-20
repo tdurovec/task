@@ -1,3 +1,4 @@
+from distutils.log import debug
 from flask import Flask, jsonify, request
 import json
 import http
@@ -79,3 +80,7 @@ def delete_interface(interface_name):
     if delete_interface := app.cache.pop(interface_name, None):
         return jsonify({"info":f"{interface_name} was deleted"}), http.HTTPStatus.OK
     return jsonify({"info":f"{interface_name} was not found to deleted"}), http.HTTPStatus.NOT_FOUND
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
