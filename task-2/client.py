@@ -1,3 +1,4 @@
+from cgi import FieldStorage
 import requests
 import json
 
@@ -9,10 +10,13 @@ from typing import List, Dict
 import marshmallow as mm
 
 @dataclass
-class Ietf_Ip_Ipv4(DataClassJsonMixin):
+class Ietf_Ip_Ipv4_Address(DataClassJsonMixin):
     ip: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
     netmask: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
 
+@dataclass
+class Ietf_Ip_Ipv4(DataClassJsonMixin):
+    address: List[Ietf_Ip_Ipv4_Address] = field(metadata=config(mm_field=mm.fields.List(mm.fields.Nested(Ietf_Ip_Ipv4_Address.schema()))), default_factory=dict)
 
 @dataclass
 class Interface(DataClassJsonMixin):
@@ -21,14 +25,14 @@ class Interface(DataClassJsonMixin):
     type: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
     enabled: bool = field(metadata=config(mm_field=mm.fields.Bool()), default=False)
     link_up_down_trap_enable: str = field(default="", metadata=config(field_name="link-up-down-trap-enable"))
-    ietf_ip_ipv4: Ietf_Ip_Ipv4 = field(default_factory=Ietf_Ip_Ipv4, metadata=config(mm.fields.Nested(Ietf_Ip_Ipv4.schema())))
+    ietf_ip_ipv4: Ietf_Ip_Ipv4 = field(default_factory=Ietf_Ip_Ipv4,metadata=config(field_name="ietf-ip:ipv4", mm_field=mm.fields.Nested(Ietf_Ip_Ipv4.schema())))
+
 
     def dict(self):
         dct = {}
         for k, v in asdict(self).items():
-            if (k == "description" and v == ""):
-                continue
-            dct[k] = v
+            if (k == "description" and v != ""):
+                dct[k] = v
 
         return dct
 
@@ -55,10 +59,7 @@ class InterfaceManager:
 def main():
     interface_manager = InterfaceManager()
     interfaces = interface_manager.get_all_interfaces()
-    print(type(interfaces[0]))
-
-    # interfaces to dataclass and write in separate file
-
+    
     list_of_dataclass_interface = Interfaces.from_json(Interfaces(interfaces).to_json()).interfaces
     interface_manager.write_all_interfaces(list_of_dataclass_interface)
 
