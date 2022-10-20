@@ -8,33 +8,25 @@ from typing import List, Dict
 
 import marshmallow as mm
 
+@dataclass
+class Ietf_Ip_Ipv4(DataClassJsonMixin):
+    ip: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
+    netmask: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
+
 
 @dataclass
 class Interface(DataClassJsonMixin):
-    name: str = ""
-    description: str = ""
-    type: str = ""
-    enabled: bool = False
+    name: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
+    description: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
+    type: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
+    enabled: bool = field(metadata=config(mm_field=mm.fields.Bool()), default=False)
     link_up_down_trap_enable: str = field(default="", metadata=config(field_name="link-up-down-trap-enable"))
-    ietf_ip_ipv4: Dict[str, List[Dict[str, str]]] = field(default_factory=Dict, 
-                    metadata=config(
-                            field_name="ietf-ip:ipv4",
-                            mm_field=mm.fields.Dict(
-                                key=mm.fields.Str(),
-                                values=mm.fields.List(
-                                    mm.fields.Dict(
-                                        keys=mm.fields.Str(),
-                                        values=mm.fields.Str()
-                                    )
-                                ),
-                            )
-                        )
-                    )
+    ietf_ip_ipv4: Ietf_Ip_Ipv4 = field(default_factory=Ietf_Ip_Ipv4, metadata=config(mm.fields.Nested(Ietf_Ip_Ipv4.schema())))
 
     def dict(self):
         dct = {}
         for k, v in asdict(self).items():
-            if (k=="description" and v == ""):
+            if (k == "description" and v == ""):
                 continue
             dct[k] = v
 
@@ -50,11 +42,11 @@ class InterfaceManager:
     def __init__(self):
         self.AllInterfacesURL = self.API + "/get-all-interfaces/"
 
-    def get_all_interfaces(self):
+    def get_all_interfaces(self) -> List[Dict]:
         data = requests.get(self.AllInterfacesURL)
         return data.json()
 
-    def write_all_interfaces(self, class_data: List):
+    def write_all_interfaces(self, class_data) -> None:
         # dict is in data_class interface
         data = [i.dict() for i in class_data]
         with open("client_data.json", "w") as fp:
@@ -63,6 +55,7 @@ class InterfaceManager:
 def main():
     interface_manager = InterfaceManager()
     interfaces = interface_manager.get_all_interfaces()
+    print(type(interfaces[0]))
 
     # interfaces to dataclass and write in separate file
 
