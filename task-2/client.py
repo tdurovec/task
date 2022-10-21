@@ -10,18 +10,14 @@ import marshmallow as mm
 
 
 @dataclass
-class Ietf_Ip_Ipv4_Address(DataClassJsonMixin):
-    ip: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
-    netmask: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
-
-
-@dataclass
 class Ietf_Ip_Ipv4(DataClassJsonMixin):
-    address: List[Ietf_Ip_Ipv4_Address] = field(
+    address: List[Dict[str, str]] = field(
         metadata=config(
             mm_field=mm.fields.List(
-                mm.fields.Nested(
-                    Ietf_Ip_Ipv4_Address.schema()))),
+                mm.fields.Dict(
+                    keys=mm.fields.Str(),
+                    values=mm.fields.Str()
+            ))),
         default_factory=dict)
 
 
