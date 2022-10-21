@@ -11,14 +11,15 @@ import marshmallow as mm
 
 @dataclass
 class Ietf_Ip_Ipv4(DataClassJsonMixin):
-    address: List[Dict[str, str]] = field(
-        metadata=config(
-            mm_field=mm.fields.List(
-                mm.fields.Dict(
-                    keys=mm.fields.Str(),
-                    values=mm.fields.Str()
-            ))),
-        default_factory=dict)
+    ip: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
+    netmask: str = field(metadata=config(mm_field=mm.fields.Str()), default='')
+
+
+@dataclass
+class AddressIpv4(DataClassJsonMixin):
+    address: List[Ietf_Ip_Ipv4] = field(
+        metadata=config(mm_field=mm.fields.List(mm.fields.Nested(Ietf_Ip_Ipv4.schema()))),
+        default_factory=list)
 
 
 @dataclass
@@ -36,22 +37,12 @@ class Interface(DataClassJsonMixin):
     link_up_down_trap_enable: str = field(
         default="", metadata=config(
             field_name="link-up-down-trap-enable"))
-    ietf_ip_ipv4: Ietf_Ip_Ipv4 = field(
-        default_factory=Ietf_Ip_Ipv4,
+    ietf_ip_ipv4: AddressIpv4 = field(
+        default_factory=AddressIpv4,
         metadata=config(
-            field_name="ietf-ip:ipv4",
             mm_field=mm.fields.Nested(
-                Ietf_Ip_Ipv4.schema())))
-
-
-@dataclass
-class Interfaces(DataClassJsonMixin):
-    interfaces: List[Interface] = field(
-        metadata=config(
-            mm_field=mm.fields.List(
-                mm.fields.Nested(
-                    Interface.schema()))))
-
+                AddressIpv4.schema(),
+                data_key="ietf-ip:ipv4")))
 
 class InterfaceManager:
     API = "http://127.0.0.1:5000"
@@ -63,8 +54,7 @@ class InterfaceManager:
         data = requests.get(self.AllInterfacesURL)
         return data.json()
 
-    def write_all_interfaces(self, classes_list: List[Interface]) -> None:
-        data = list(map(lambda x: x.to_dict(), classes_list))
+    def write_all_interfaces(self, data: List[Dict]) -> None:
         with open("client_data.json", "w") as fp:
             json.dump(data, fp, indent=2)
 
@@ -73,9 +63,9 @@ def main():
     interface_manager = InterfaceManager()
     interfaces = interface_manager.get_all_interfaces()
 
-    list_of_dataclass_interface = Interfaces.from_json(
-        Interfaces(interfaces).to_json()).interfaces
-    interface_manager.write_all_interfaces(list_of_dataclass_interface)
+    interfaces = Interface.schema().load(interfaces, many=True, unknown=mm.EXCLUDE)
+    json_interfaces = Interface.schema().dump(interfaces, many=True)
+    interface_manager.write_all_interfaces(json_interfaces)
 
 
 if __name__ == "__main__":
